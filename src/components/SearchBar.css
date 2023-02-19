@@ -1,0 +1,26 @@
+.searchBar {
+  display: flex;
+}
+
+.buttonDiv {
+  background: linear-gradient(166.57deg, #4f00d0 5.47%, #9250ff 90.36%);
+  color: #ffff;
+  padding: 10px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+input {
+  margin: 20px;
+  height: 30px;
+  width: 350px;
+  border: 2px solid purple;
+  background-color: #110022;
+  border-radius: 8px;
+  color: #ffff;
+}
+
+.link :hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
