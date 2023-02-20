@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./SearchBar.css";
 
 const SearchBar = () => {
@@ -9,19 +9,28 @@ const SearchBar = () => {
     setInputValue(event.target.value);
   };
 
-  return (
-    <div className="searchBar">
-      <input
-        placeholder="Type the name of a pokemon"
-        type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-      />
 
-      <Link to={"/pokemon/" + inputValue.toLowerCase()} className={"link"}>
-        <div className="buttonDiv">Search</div>
-      </Link>
-    </div>
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+      navigate("/pokemon/" + inputValue.toLowerCase());
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      {" "}
+      <div className="searchBar">
+        <input
+          placeholder="Type the name of a pokemon"
+          type="text"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+
+        <div className="buttonDiv"><button type="submit" >Search</button></div>
+      
+      </div>
+    </form>
   );
 };
 export default SearchBar;

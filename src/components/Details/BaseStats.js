@@ -7,7 +7,7 @@ export default function BaseStats(props) {
     <h3>Base Stats</h3>
     {stats?(
     <ul>{stats.map((stat, index) =>  (
-    <li key={index}><div>{stat.stat.name}</div> <progress value={stat.base_stat} max="100"></progress></li>))}
+    <li key={index}><div><b>{stat.stat.name}</b></div> <progress value={stat.base_stat} max="100"></progress></li>))}
        
 
     </ul>):(<h1>{"Not available"}</h1>)}
