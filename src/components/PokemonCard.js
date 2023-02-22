@@ -6,11 +6,13 @@ export default function PokemonCard(props) {
   const { pokemon, image } = props;
   const { id, name } = pokemon;
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
+    
       <div className="card" key={id}>
         <Link to={"/pokemon/" + name} className="link">
           <div className="image">
+          <Suspense fallback={<h1>Loading...</h1>}>
             <img src={image} alt={"null"}  loading='lazy'/>
+            </Suspense>
           </div>
 
           <div className="header">
@@ -18,6 +20,6 @@ export default function PokemonCard(props) {
           </div>
         </Link>
       </div>
-    </Suspense>
+    
   );
 }
