@@ -6,6 +6,8 @@ import "./Pokedex.css";
 
 const PokemonCard = lazy(() => import("../components/PokemonCard"));
 
+var offset =0;
+
 function zeroCount(i) {
   if (i > 9 && i <= 99) {
     return "0";
@@ -15,20 +17,38 @@ function zeroCount(i) {
   return "00";
 }
 
+
 function Pokedex() {
   const [pokemonData, setPokemonData] = useState([]);
-  useEffect(() => {
-    axios.get(POKEMON_API_URL + "?limit=108").then((response) => {
+
+  const next = () => {
+    offset = offset+20;
+    getPokedex();
+    
+  }
+
+  const previous = () =>{
+    if(offset>19){
+      offset = offset-20;
+      getPokedex();
+    }
+  }
+
+const getPokedex = () => {
+    axios.get(POKEMON_API_URL + "?limit=20&offset="+ offset).then((response) => {
       if (response.status >= 200 && response.status < 300) {
         const { results } = response.data;
         let newPokeData = [];
         let zero = "00";
+        var imageId = offset;
         results.forEach((pokemon, i) => {
+         
+          imageId++;
           i++;
-          zero = zeroCount(i);
+          zero = zeroCount(imageId);
           let pokeObj = {
             id: i,
-            url: IMAGE_URL + zero + i + ".png",
+            url: IMAGE_URL + zero + imageId + ".png",
             name: pokemon.name,
           };
           newPokeData.push(pokeObj);
@@ -37,7 +57,10 @@ function Pokedex() {
         setPokemonData(newPokeData);
       }
     });
-  }, []);
+  }
+
+
+  useEffect(getPokedex, []);
 
   return (
     <div>
@@ -52,6 +75,9 @@ function Pokedex() {
                 </Suspense>
               </div>
             ))}
+          </div>
+          <div className="pagination">
+          { offset >0? (<button onClick={previous}>{"<< previous"}</button>):(<div></div>)}    <button onClick={next}>{"next >>"}</button> 
           </div>
         </div>
       ) : (

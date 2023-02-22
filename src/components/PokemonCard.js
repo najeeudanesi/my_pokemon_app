@@ -10,7 +10,7 @@ export default function PokemonCard(props) {
       <div className="card" key={id}>
         <Link to={"/pokemon/" + name} className="link">
           <div className="image">
-            <img src={image} alt={"null"} />
+            <img src={image} alt={"null"}  loading='lazy'/>
           </div>
 
           <div className="header">
