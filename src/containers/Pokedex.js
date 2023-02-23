@@ -17,6 +17,9 @@ function zeroCount(i) {
 
 function Pokedex() {
   const [pokemonData, setPokemonData] = useState([]);
+  const [seed, setSeed] =useState(1);
+  const reset = () => { setSeed(Math.random());  
+}
 
   const next = () => {
     offset = offset + 20;
@@ -31,9 +34,7 @@ function Pokedex() {
   };
 
   const getPokedex = () => {
-    axios
-      .get(POKEMON_API_URL + "?limit=20&offset=" + offset)
-      .then((response) => {
+    axios.get(POKEMON_API_URL + "?limit=20&offset=" + offset).then((response) => {
         if (response.status >= 200 && response.status < 300) {
           const { results } = response.data;
           let newPokeData = [];
@@ -52,14 +53,14 @@ function Pokedex() {
           });
 
           setPokemonData(newPokeData);
+          reset();
         }
       });
   };
-
   useEffect(getPokedex, []);
 
   return (
-    <div>
+    <div key={seed}>
       {pokemonData ? (
         <div className="content">
           <SearchBar />
