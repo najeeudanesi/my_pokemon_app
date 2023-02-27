@@ -1,3 +1,28 @@
+# Welcome to My Pokemon App
+***
+
+## Task
+To create a pokemon react application and it must have a Pokedex page and pokemon details page
+
+## Description
+created a pokemon application using react and the pokeapi. The api was called using axios
+
+## Installation
+you must have node installed on pc, run npm build in project directory to install all dependencies
+
+## Usage
+go to project dircetory, run npm start and go to the localhost 3000 or you can follow the link https://funny-jalebi-0b2702.netlify.app/ 
+to view project on hosted site.
+```
+./my_pokemon_app Najiu Danesi
+```
+
+### The Core Team
+Qwasar
+
+<span><i>Made at <a href='https://qwasar.io'>Qwasar SV -- Software Engineering School</a></i></span>
+<span><img alt='Qwasar SV -- Software Engineering School's Logo' src='https://storage.googleapis.com/qwasar-public/qwasar-logo_50x50.png' width='20px'></span>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
